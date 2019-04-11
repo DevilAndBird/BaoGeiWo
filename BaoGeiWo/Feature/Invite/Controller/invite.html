@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Invite</title>
+</head>
+<style type="text/css">
+	body {
+		background-color: #F0F0F7;
+	}
+	.bg {
+		background-color: #ffffff;
+		padding-top: 20px;
+		height: 70%;
+	}
+	.img {
+		text-align: center;
+		padding-top: 100px;
+	}
+	.shareText {
+		color: #FFC400;
+		padding-top: 20px;
+		text-align: center;
+		padding-bottom: 100px;
+	}
+</style>
+<script>
+	function share() {
+		window.webkit.messageHandlers.shareApp.postMessage("");
+	}
+</script>
+<body>
+	<div class="bg">
+		<div class="img" onclick="share()">
+            <img src="invite_temp.png">
+		</div>
+        <p class="shareText">扫描二维码图案，关注包给我公众号</p>
+	</div>
+
+</body>
+</html>
