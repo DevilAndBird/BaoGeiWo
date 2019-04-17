@@ -580,7 +580,12 @@
     [SVProgressHUD show];
     [OrderRequest queryQRCodeIsUseful:result success:^(id responseObject) {
         
-        [OrderRequest saveOrderBaggageWithQRCode:result orderId:self.orderDetail.orderId success:^(id responseObject) {
+        OrderBaggageModel *baggage = self.orderDetail.orderBaggages[self.currentRow-1];
+        NSNumber *baggageId = nil;
+        if (baggage.baggageId != nil && ![baggage.baggageId isEqualToString:@""]) {
+            baggageId = @(baggage.baggageId.integerValue);
+        }
+        [OrderRequest saveOrderBaggageWithQRCode:result orderId:self.orderDetail.orderId baggageId:baggageId success:^(id responseObject) {
             [SVProgressHUD dismiss];
             POPUPINFO(@"关联成功");
             OrderBaggageModel *baggage = self.orderDetail.orderBaggages[self.currentRow-1];

@@ -627,9 +627,15 @@
 
 #pragma mark qr码关联订单
 + (void)saveOrderBaggageWithQRCode:(NSString *)qrCode orderId:(NSString *)orderId success:(SuccessBlock)success failure:(FailureBlock)failure {
+    [self saveOrderBaggageWithQRCode:qrCode orderId:orderId baggageId:nil success:success failure:failure];
+}
++ (void)saveOrderBaggageWithQRCode:(NSString *)qrCode orderId:(NSString *)orderId baggageId:(NSNumber *)baggageId success:(SuccessBlock)success failure:(FailureBlock)failure {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:0];
     [parameters setObject:qrCode forKey:@"baggageid"];
     [parameters setObject:orderId forKey:@"orderid"];
+    if (baggageId != nil) {
+        [parameters setObject:baggageId forKey:@"id"];
+    }
     
     [BGWRequestManager POST:API_SaveOrderBaggage parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         if (success) {

@@ -78,6 +78,8 @@ typedef void(^FailureBlock)(id error);
 
 //qr码关联订单
 + (void)saveOrderBaggageWithQRCode:(NSString *)qrCode orderId:(NSString *)orderId success:(SuccessBlock)success failure:(FailureBlock)failure;
++ (void)saveOrderBaggageWithQRCode:(NSString *)qrCode orderId:(NSString *)orderId baggageId:(NSNumber *)baggageId success:(SuccessBlock)success failure:(FailureBlock)failure;
+
 
 //关联行李图片
 + (void)baggageImageUploadWithImageUrl:(NSString *)imageUrl baggageId:(NSString *)baggageId orderId:(NSString *)orderId success:(SuccessBlock)success failure:(FailureBlock)failure;
